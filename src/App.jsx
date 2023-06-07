@@ -10,7 +10,7 @@ import { useGlobalContext } from './Context/Context'
 function App() {
 
 
-  const { waiting, loading, questions, index, correct, nextQuestions, checkAnswers } = useGlobalContext();
+  const { waiting, loading, questions, index, correct, nextQuestion, checkAnswers } = useGlobalContext();
 
 
   if (waiting) {
@@ -61,9 +61,16 @@ function App() {
               })}
             </div>
           </article>
-          <button className="next-question" onClick={nextQuestions}>
+          {index > 0 &&
+            <button className="next-question" onClick={nextQuestion}>
+              Voltar questão
+            </button>
+          }
+
+          <button className="next-question" onClick={nextQuestion}>
             Próxima questãos
           </button>
+
         </section>
       </main>
     </>

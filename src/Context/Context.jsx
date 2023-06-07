@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
 
     const [quiz, setQuiz] = useState(
         {
-            amount: 10,
+            amount: 4,
             category: "sport",
             difficulty: "easy"
         }
@@ -44,7 +44,7 @@ const AppProvider = ({ children }) => {
         if (response) {
             const data = response.data.results;
 
-            console.log(data);
+            // console.log(data);
 
             if (data.length) {
                 setQuestions(data)
@@ -71,7 +71,27 @@ const AppProvider = ({ children }) => {
 
 
     const nextQuestion = () => {
-        setIndex((oldIndex) => {
+      
+       
+        setIndex((oldIndex) => {    
+            const index = oldIndex + 1;
+            console.log(index);
+
+            if (index > oldIndex.lenght - 1) {
+                openModal();
+                return 0;
+
+            } else {
+                return index;
+            }
+        })
+    }
+
+
+    const previousQuestion = () => {
+      
+        
+        setIndex((oldIndex) => {    
             const index = oldIndex + 1;
 
             if (index > oldIndex.lenght - 1) {
@@ -112,7 +132,7 @@ const AppProvider = ({ children }) => {
     }
 
     return (
-        <AppContext.Provider value={{ waiting, loading, questions, index, correct, modal, nextQuestion, checkAnswers, closeModal, quiz, handleSubmit, handleChange }}>
+        <AppContext.Provider value={{ waiting, loading, questions, index, correct, modal, nextQuestion, checkAnswers, closeModal, previousQuestion, quiz, handleSubmit, handleChange }}>
             {children}
         </AppContext.Provider>
     )

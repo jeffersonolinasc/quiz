@@ -7,7 +7,7 @@ export default function SetupForm() {
         <main>
             <section className="quiz quiz-small">
                 <form action="" className="setup-form">
-                    <h2>setup quiz</h2>
+                    <h2>Configurações do Quiz</h2>
                     <div className="form-control">
                         <label htmlFor="amount">Número de Questões</label>
                         <input type="number" value={quiz.amount} onChange={handleChange} name='amount' id='amount' className='form-input' min={1} max={50} />
